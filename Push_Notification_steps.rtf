@@ -1,0 +1,46 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1404\cocoasubrtf460
+{\fonttbl\f0\fnil\fcharset0 Verdana;}
+{\colortbl;\red255\green255\blue255;\red51\green138\blue81;\red26\green75\blue142;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww19760\viewh10860\viewkind0
+\deftab720
+\pard\pardeftab720\sl476\sa200\partightenfactor0
+
+\f0\b\fs36 \cf0 \expnd0\expndtw0\kerning0
+Push Notification steps
+\b0 \
+1) First of all login into your developers account\'a0 \'96\'a0 {\field{\*\fldinst{HYPERLINK "https://developer.apple.com/account/"}}{\fldrslt https://developer.apple.com/account/}}\
+2) you will be redirected to following screen, Click on \'93Certificates\'94.\
+3) Click on "All" Tab and Click \'93+\'94 button\
+\pard\pardeftab720\sl476\sa200\partightenfactor0
+\cf0 4) Select \'93Apple Push Notification service SSL (Production)\'94 and click \'93Continue\'94\
+5) Now, Select the app ID drop Drop down list and click on \'93Continue\'94 to go to the next step.\
+6) Follow the steps under \'93About Creating a Certificate Signing Request (CSR)\'94 for Creating Certificate Signing Request\
+\pard\pardeftab720\sl340\sa200\partightenfactor0
+\cf0 7) Select \'93Request a Certificate From a Certificate Authority\'94 by navigating \'93Certificate Assistance\'94 from toolbar options for keychain.\
+\pard\pardeftab720\sl476\sa200\partightenfactor0
+\cf0 8) Fill the required certificate Info. \'96 select\'a0 \'93Saved to disk\'94 and select \'93Continue\'94\
+\pard\pardeftab720\sl380\sa200\partightenfactor0
+\cf0 9) Upload \'a0\'93.certSigningRequest\'94 file which was\'a0generated (in Step 8Now Click \'93Done\'94 to finish the registration,the page will be refreshed and you will see this screen), then click \'93Generate\'94.\
+\pard\pardeftab720\sl476\sa200\partightenfactor0
+\cf0 10) Then Click \'93Download\'94 button to download the certificate (.cer file) you\'92ve created just now\'a0and then double click the downloaded file to install the certificate into Keychain Access on your Mac.\
+\pard\pardeftab720\sl380\sa200\partightenfactor0
+\cf0 11) Now go to \'93Keychain\'94 on you mac system, look for the certificate you have just installed. If you are unsure which certificate is the correct , it should start with \'93Apple Production IOS Push Services\'94and \'a0followed by app\'92s bundleID.\
+\pard\pardeftab720\sl476\sa200\partightenfactor0
+\cf0 12) Expand the certificate, you should see the private key with either your name or your company name. Select both items by using the \'93Select\'94 key on your keyboard, right click (or cmd-click if you use a single button mouse), choose \'93Export 2 items\'94, like Below:\
+13) Then save the p12 file with name \'93pushcert.p12\uc0\u8243  to your Desktop \'96 now you will be prompted to enter a password to protect it, you can either click Enter to skip the password or enter a password you desire.\
+\pard\pardeftab720\sl380\sa200\partightenfactor0
+\cf0 14) Now the most difficult part \'96 open \'93Terminal\'94 on your Mac, and run the following commands\
+\pard\pardeftab720\sl364\partightenfactor0
+\cf0 cd\
+\
+cd Desktop (reach to finder, where you have saved (download) above created certificate)\
+\
+openssl pkcs12 -in pushcert.p12 -out pushcert.pem -nodes -clcerts\
+\
+pushcert.p12 - your .p12 certificate file name\
+pushcert.pem - .pem file name that you are going to create for push notification\
+\
+share .pem file with api developer to receive push notification\
+\
+Refer this link for pictorical ref:\
+{\field{\*\fldinst{HYPERLINK "http://www.apptuitions.com/generate-pem-file-for-push-notification/"}}{\fldrslt http://www.apptuitions.com/generate-pem-file-for-push-notification/}}}
